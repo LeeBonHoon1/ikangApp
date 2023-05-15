@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>NSAppleMusicUsageDescription</key>
+  <string>YOUR TEXT1</string>
+  <key>NSBluetoothAlwaysUsageDescription</key>
+  <string>YOUR TEXT2</string>
+  <key>NSBluetoothPeripheralUsageDescription</key>
+  <string>YOUR TEXT3</string>
+  <key>NSCalendarsUsageDescription</key>
+  <string>YOUR TEXT4</string>
+  <key>NSCameraUsageDescription</key>
+  <string>YOUR TEXT5</string>
+  <key>NSContactsUsageDescription</key>
+  <string>YOUR TEXT6</string>
+  <key>NSFaceIDUsageDescription</key>
+  <string>YOUR TEXT7</string>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>YOUR TEXT8</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>YOUR TEXT9</string>
+  <key>NSLocationTemporaryUsageDescriptionDictionary</key>
+  <dict>
+    <key>YOUR-PURPOSE-KEY</key>
+    <string>YOUR TEXT10</string>
+  </dict>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>YOUR TEXT11</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>YOUR TEXT12</string>
+  <key>NSMotionUsageDescription</key>
+  <string>YOUR TEXT13</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>YOUR TEXT14</string>
+  <key>NSPhotoLibraryAddUsageDescription</key>
+  <string>YOUR TEXT15</string>
+  <key>NSRemindersUsageDescription</key>
+  <string>YOUR TEXT16</string>
+  <key>NSSpeechRecognitionUsageDescription</key>
+  <string>YOUR TEXT17</string>
+  <key>NSSiriUsageDescription</key>
+  <string>YOUR TEXT18</string>
+  <key>NSUserTrackingUsageDescription</key>
+  <string>YOUR TEXT19</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>ikangApp</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+</dict>
+</plist>
