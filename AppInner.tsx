@@ -19,7 +19,6 @@ import messaging from '@react-native-firebase/messaging';
 import {useAppDispatch} from './src/store';
 import firebaseSlice from './src/slices/firebase';
 // import axios from 'axios';
-import APIs from './src/lib/APIs';
 
 // import {useAppDispatch} from './src/store';
 // import firebaseSlice from './src/slices/firebase';
@@ -98,14 +97,12 @@ function AppInner() {
         token: fcmToken,
       }),
     );
-    // const param = {
-    //   token: fcmToken,
-    // };
-    // await APIs.sendToken(param);
+
     return fcmToken;
   }, []);
 
   useEffect(() => {
+    getFcmToken();
     if (Platform.OS === 'android' && DeviceInfo.getApiLevelSync() >= 33)
       checkPermissionANDROID();
   }, []);
