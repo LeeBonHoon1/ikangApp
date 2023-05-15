@@ -53,7 +53,7 @@ function SignIn({navigation}: MainInScreenProps) {
     try {
       setLoading(true);
       const res = await APIs.signIn(params);
-      if (res.userInfo.ADMISSION === '0') {
+      if (!res.userInfo.ADMISSION) {
         Alert.alert('알림', '회원승인 후 로그인이 가능합니다');
         return;
       }
