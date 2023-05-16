@@ -103,8 +103,9 @@ function AppInner() {
 
   useEffect(() => {
     getFcmToken();
-    if (Platform.OS === 'android' && DeviceInfo.getApiLevelSync() >= 33)
+    if (Platform.OS === 'android' && DeviceInfo.getApiLevelSync() >= 33) {
       checkPermissionANDROID();
+    }
   }, []);
 
   useEffect(() => {
