@@ -7,12 +7,10 @@ import {
   Pressable,
   ActivityIndicator,
   ImageBackground,
-  Alert,
 } from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-// import Icon from 'react-native-vector-icons/Ionicons';
 import {RootStackParamList} from '../../AppInner';
-import APIs from '../lib/APIs';
+import DismissKeyboardView from '../components/DissmissKeyboardView';
 
 type MainInScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -70,40 +68,49 @@ const SIgnupEmail = ({navigation, route}: MainInScreenProps) => {
       email,
     );
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../img/signup.png')}
-        style={styles.logo}
-      />
-      <Text style={styles.mainTitle}>이강학원에 오신 걸 환영합니다!</Text>
-      <Text style={styles.title}>이메일을 입력해주세요</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="이메일"
-        onChangeText={onChangeEmail}
-      />
-      <Pressable
-        style={
-          canGoNext
-            ? StyleSheet.compose(styles.loginButton, styles.loginButtonActive)
-            : styles.loginButton
-        }
-        disabled={!canGoNext || loading}
-        onPress={sendCheckEmail}>
-        {loading ? (
-          <ActivityIndicator color="white" />
-        ) : (
-          <Text
-            style={
-              !canGoNext
-                ? styles.loginButtonText
-                : styles.confirmloginButtonText
-            }>
-            확인
-          </Text>
-        )}
-      </Pressable>
-    </View>
+    <DismissKeyboardView
+      contentContainerStyle={{
+        flex: 1,
+      }}
+      style={{
+        backgroundColor: 'white',
+      }}>
+      <View style={styles.container}>
+        <ImageBackground
+          source={require('../img/signup.png')}
+          style={styles.logo}
+        />
+        <Text style={styles.mainTitle}>이강학원에 오신 걸 환영합니다!</Text>
+        <Text style={styles.title}>이메일을 입력해주세요</Text>
+
+        <TextInput
+          style={styles.input}
+          placeholder="이메일"
+          onChangeText={onChangeEmail}
+        />
+        <Pressable
+          style={
+            canGoNext
+              ? StyleSheet.compose(styles.loginButton, styles.loginButtonActive)
+              : styles.loginButton
+          }
+          disabled={!canGoNext || loading}
+          onPress={sendCheckEmail}>
+          {loading ? (
+            <ActivityIndicator color="white" />
+          ) : (
+            <Text
+              style={
+                !canGoNext
+                  ? styles.loginButtonText
+                  : styles.confirmloginButtonText
+              }>
+              확인
+            </Text>
+          )}
+        </Pressable>
+      </View>
+    </DismissKeyboardView>
   );
 };
 

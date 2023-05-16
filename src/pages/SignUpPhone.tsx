@@ -11,6 +11,7 @@ import {
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import {RootStackParamList} from '../../AppInner';
+import DismissKeyboardView from '../components/DissmissKeyboardView';
 
 type MainInScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -37,42 +38,48 @@ const SignUpPhone = ({navigation, route}: MainInScreenProps) => {
 
   const canGoNext = phone;
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../img/signup.png')}
-        style={styles.logo}
-      />
-      <Text style={styles.mainTitle}>이강학원에 오신 걸 환영합니다!</Text>
-      <Text style={styles.title}>휴대전화번호를 입력해주세요</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="휴대전화번호"
-        onChangeText={onChangeNumber}
-        value={phone}
-        keyboardType="number-pad"
-      />
-      <Pressable
-        style={
-          canGoNext
-            ? StyleSheet.compose(styles.loginButton, styles.loginButtonActive)
-            : styles.loginButton
-        }
-        disabled={!canGoNext || loading}
-        onPress={nextRoute}>
-        {loading ? (
-          <ActivityIndicator color="white" />
-        ) : (
-          <Text
-            style={
-              !canGoNext
-                ? styles.loginButtonText
-                : styles.confirmloginButtonText
-            }>
-            확인
-          </Text>
-        )}
-      </Pressable>
-    </View>
+    <DismissKeyboardView
+      style={styles.whiteBg}
+      contentContainerStyle={{
+        flex: 1,
+      }}>
+      <View style={styles.container}>
+        <ImageBackground
+          source={require('../img/signup.png')}
+          style={styles.logo}
+        />
+        <Text style={styles.mainTitle}>이강학원에 오신 걸 환영합니다!</Text>
+        <Text style={styles.title}>휴대전화번호를 입력해주세요</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="휴대전화번호"
+          onChangeText={onChangeNumber}
+          value={phone}
+          keyboardType="number-pad"
+        />
+        <Pressable
+          style={
+            canGoNext
+              ? StyleSheet.compose(styles.loginButton, styles.loginButtonActive)
+              : styles.loginButton
+          }
+          disabled={!canGoNext || loading}
+          onPress={nextRoute}>
+          {loading ? (
+            <ActivityIndicator color="white" />
+          ) : (
+            <Text
+              style={
+                !canGoNext
+                  ? styles.loginButtonText
+                  : styles.confirmloginButtonText
+              }>
+              확인
+            </Text>
+          )}
+        </Pressable>
+      </View>
+    </DismissKeyboardView>
   );
 };
 

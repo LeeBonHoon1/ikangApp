@@ -94,7 +94,7 @@ function SignIn({navigation}: MainInScreenProps) {
         <ImageBackground
           source={require('../img/edu.png')}
           resizeMode="contain">
-          <View style={styles.logo}></View>
+          <View style={styles.logo} />
           <Text style={styles.companyName}>이강학원</Text>
         </ImageBackground>
         <View style={styles.inputWrapper}>

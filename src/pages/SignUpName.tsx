@@ -15,6 +15,7 @@ import {RootStackParamList} from '../../AppInner';
 import {useSelector} from 'react-redux';
 import {RootState} from '../store/reducer';
 import APIs from '../lib/APIs';
+import DismissKeyboardView from '../components/DissmissKeyboardView';
 
 type MainInScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -58,41 +59,49 @@ const SignUpName = ({navigation, route}: MainInScreenProps) => {
 
   const canGoNext = name;
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../img/signup.png')}
-        style={styles.logo}
-      />
-      <Text style={styles.mainTitle}>이강학원에 오신 걸 환영합니다!</Text>
-      <Text style={styles.title}>이름을 입력해주세요</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="이름"
-        onChangeText={setChangeName}
-        value={name}
-      />
-      <Pressable
-        style={
-          canGoNext
-            ? StyleSheet.compose(styles.loginButton, styles.loginButtonActive)
-            : styles.loginButton
-        }
-        disabled={!canGoNext || loading}
-        onPress={onSubmit}>
-        {loading ? (
-          <ActivityIndicator color="white" />
-        ) : (
-          <Text
-            style={
-              !canGoNext
-                ? styles.loginButtonText
-                : styles.confirmloginButtonText
-            }>
-            확인
-          </Text>
-        )}
-      </Pressable>
-    </View>
+    <DismissKeyboardView
+      contentContainerStyle={{
+        flex: 1,
+      }}
+      style={{
+        backgroundColor: 'white',
+      }}>
+      <View style={styles.container}>
+        <ImageBackground
+          source={require('../img/signup.png')}
+          style={styles.logo}
+        />
+        <Text style={styles.mainTitle}>이강학원에 오신 걸 환영합니다!</Text>
+        <Text style={styles.title}>이름을 입력해주세요</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="이름"
+          onChangeText={setChangeName}
+          value={name}
+        />
+        <Pressable
+          style={
+            canGoNext
+              ? StyleSheet.compose(styles.loginButton, styles.loginButtonActive)
+              : styles.loginButton
+          }
+          disabled={!canGoNext || loading}
+          onPress={onSubmit}>
+          {loading ? (
+            <ActivityIndicator color="white" />
+          ) : (
+            <Text
+              style={
+                !canGoNext
+                  ? styles.loginButtonText
+                  : styles.confirmloginButtonText
+              }>
+              확인
+            </Text>
+          )}
+        </Pressable>
+      </View>
+    </DismissKeyboardView>
   );
 };
 

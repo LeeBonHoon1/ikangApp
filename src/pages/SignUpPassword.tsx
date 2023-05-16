@@ -7,10 +7,13 @@ import {
   Pressable,
   ActivityIndicator,
   ImageBackground,
+  Platform,
 } from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import {RootStackParamList} from '../../AppInner';
+import DismissKeyboardView from '../components/DissmissKeyboardView';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 type MainInScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -36,46 +39,55 @@ const SignUpPassword = ({navigation, route}: MainInScreenProps) => {
 
   const canGoNext = password;
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../img/signup.png')}
-        style={styles.logo}
-      />
-      <Text style={styles.mainTitle}>이강학원에 오신 걸 환영합니다!</Text>
-      <Text style={styles.title}>비밀번호를 입력해주세요</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="비밀번호"
-        onChangeText={onChangePassword}
-        secureTextEntry={true}
-        value={password}
-      />
-      <Pressable
-        style={
-          canGoNext
-            ? StyleSheet.compose(styles.loginButton, styles.loginButtonActive)
-            : styles.loginButton
-        }
-        disabled={!canGoNext || loading}
-        onPress={nextRoute}>
-        {loading ? (
-          <ActivityIndicator color="white" />
-        ) : (
-          <Text
-            style={
-              !canGoNext
-                ? styles.loginButtonText
-                : styles.confirmloginButtonText
-            }>
-            확인
-          </Text>
-        )}
-      </Pressable>
-    </View>
+    <DismissKeyboardView
+      style={styles.whiteBg}
+      contentContainerStyle={{
+        flex: 1,
+      }}>
+      <View style={styles.container}>
+        <ImageBackground
+          source={require('../img/signup.png')}
+          style={styles.logo}
+        />
+        <Text style={styles.mainTitle}>이강학원에 오신 걸 환영합니다!</Text>
+        <Text style={styles.title}>비밀번호를 입력해주세요</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="비밀번호"
+          onChangeText={onChangePassword}
+          secureTextEntry={true}
+          value={password}
+        />
+        <Pressable
+          style={
+            canGoNext
+              ? StyleSheet.compose(styles.loginButton, styles.loginButtonActive)
+              : styles.loginButton
+          }
+          disabled={!canGoNext || loading}
+          onPress={nextRoute}>
+          {loading ? (
+            <ActivityIndicator color="white" />
+          ) : (
+            <Text
+              style={
+                !canGoNext
+                  ? styles.loginButtonText
+                  : styles.confirmloginButtonText
+              }>
+              확인
+            </Text>
+          )}
+        </Pressable>
+      </View>
+    </DismissKeyboardView>
   );
 };
 
 const styles = StyleSheet.create({
+  whiteBg: {
+    backgroundColor: '#FFF',
+  },
   container: {
     flex: 1,
     padding: 20,
