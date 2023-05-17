@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import store from './src/store';
 import AppInner from './AppInner';
+import SplashScreen from 'react-native-splash-screen';
 
 // import CodePush, {CodePushOptions} from 'react-native-code-push';
 
@@ -17,6 +18,15 @@ import AppInner from './AppInner';
 // };
 
 function App() {
+  useEffect(() => {
+    try {
+      setTimeout(() => {
+        SplashScreen.hide();
+      }, 500);
+    } catch (err) {
+      console.error('SPLASH ERROR : ' + err);
+    }
+  }, []);
   return (
     <Provider store={store}>
       <NavigationContainer>
