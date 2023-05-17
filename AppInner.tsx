@@ -89,6 +89,16 @@ function AppInner() {
       }
     });
   };
+  async function requestUserPermission() {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+    if (enabled) {
+      console.log('Authorization status:', authStatus);
+    }
+  }
 
   const getFcmToken = useCallback(async () => {
     const fcmToken = await messaging().getToken();
@@ -103,6 +113,8 @@ function AppInner() {
 
   useEffect(() => {
     getFcmToken();
+    requestUserPermission();
+
     if (Platform.OS === 'android' && DeviceInfo.getApiLevelSync() >= 33) {
       checkPermissionANDROID();
     }
